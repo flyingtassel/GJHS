@@ -64,10 +64,12 @@ ROBOTSTXT_OBEY = True
 
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'zxcs8.pipelines.Zxcs8Pipeline': 300,
-#}
-
+ITEM_PIPELINES = {'zxcs8.pipelines.Zxcs8filesPipeline': 1,
+                  'zxcs8.pipelines.Zxcs8imagesPipeline': 2}
+FILES_STORE = '/git/zxcs8/downloads'
+FILES_EXPIRES = 360
+IMAGES_STORE = '/git/zxcs8/downloads'
+IMAGES_EXPIRES = 360
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See http://doc.scrapy.org/en/latest/topics/autothrottle.html
 #AUTOTHROTTLE_ENABLED = True
