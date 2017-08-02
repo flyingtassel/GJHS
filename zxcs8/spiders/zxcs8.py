@@ -1,12 +1,13 @@
 # -*- coding: utf-8 -*-
 import re
 import scrapy
+import codecs
 from zxcs8.items import Zxcs8Item
 
 class ZxcsSpider(scrapy.Spider):
     name = "zxcs"
     allowed_domains = ["www.zxcs8.com"]
-    start_urls = ["http://www.zxcs8.com/post/" + str(x) for x in range(9002, 9008, 1)]
+    start_urls = ["http://www.zxcs8.com/post/" + str(x) for x in range(1169, 1170, 1)]
 
 
     # def start_requests(self):
@@ -34,7 +35,6 @@ class ZxcsSpider(scrapy.Spider):
             '//span[@class="downfile"]/a/text()').extract(), ["TXT", "1_TXT", "2_TXT", "CHM", "CHM"]))
         item['download_url'] = response.xpath(
             '//span[@class="downfile"]/a/@href').extract()
-        item['file_urls'] = [response.xpath(
-            '//span[@class="downfile"]/a/@href').extract()[1]]
+        item['file_urls'] = [item['download_url'][1]]
 
         yield item

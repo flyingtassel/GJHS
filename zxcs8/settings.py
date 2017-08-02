@@ -14,12 +14,15 @@ BOT_NAME = 'zxcs8'
 SPIDER_MODULES = ['zxcs8.spiders']
 NEWSPIDER_MODULE = 'zxcs8.spiders'
 FEED_EXPORT_ENCODING = 'utf-8'
+FEED_URI = 'file:///d://GIT//zxcs8//%(time)s.csv'
+FEED_FORMAT = 'CSV'
+
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'zxcs8 (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
-ROBOTSTXT_OBEY = True
+ROBOTSTXT_OBEY = False
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
@@ -27,10 +30,10 @@ ROBOTSTXT_OBEY = True
 # Configure a delay for requests for the same website (default: 0)
 # See http://scrapy.readthedocs.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
-#DOWNLOAD_DELAY = 3
+DOWNLOAD_DELAY = 2
 # The download delay setting will honor only one of:
-#CONCURRENT_REQUESTS_PER_DOMAIN = 16
-#CONCURRENT_REQUESTS_PER_IP = 16
+CONCURRENT_REQUESTS_PER_DOMAIN = 5
+CONCURRENT_REQUESTS_PER_IP = 5
 
 # Disable cookies (enabled by default)
 #COOKIES_ENABLED = False
@@ -64,8 +67,8 @@ ROBOTSTXT_OBEY = True
 
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
-ITEM_PIPELINES = {'zxcs8.pipelines.Zxcs8filesPipeline': 1,
-                  'zxcs8.pipelines.Zxcs8imagesPipeline': 2}
+ITEM_PIPELINES = {'zxcs8.pipelines.Zxcs8filesPipeline': 100,
+                  'zxcs8.pipelines.Zxcs8imagesPipeline': 200}
 FILES_STORE = '/git/zxcs8/downloads'
 FILES_EXPIRES = 360
 IMAGES_STORE = '/git/zxcs8/downloads'

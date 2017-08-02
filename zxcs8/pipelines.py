@@ -19,7 +19,7 @@ class Zxcs8imagesPipeline(ImagesPipeline):
 
     def file_path(self, request, response=None, info=None):
         item = request.meta['item']
-        path = "%s.%s" % (item['id'][0],
+        path = "covers/%s.%s" % (item['id'][0],
                                 item['image_urls'][0].split('.')[-1])
         return path
 
@@ -34,6 +34,5 @@ class Zxcs8filesPipeline(FilesPipeline):
 
     def file_path(self, request, response=None, info=None):
         item = request.meta['item']
-        path = "%s[%s][%s][%s]《%s》.%s" % (item['id']
-                                                [0], item['tag'][1], item['tag'][2], item['author'][0], item['title'][0], item['file_urls'][0].split('.')[-1])
+        path = "%s/%s[%s][%s][%s]《%s》.%s" % (item['tag'][1], item['id'][0], item['tag'][1], item['tag'][2], item['author'][0], item['title'][0], item['file_urls'][0].split('.')[-1])
         return path
