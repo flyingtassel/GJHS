@@ -7,7 +7,7 @@ from zxcs8.items import Zxcs8Item
 class ZxcsSpider(scrapy.Spider):
     name = "zxcs"
     allowed_domains = ["www.zxcs8.com"]
-    start_urls = ["http://www.zxcs8.com/post/" + str(x) for x in range(1169, 1170, 1)]
+    start_urls = ["http://www.zxcs8.com/post/" + str(x) for x in range(1090, 1093, 1)]
 
 
     # def start_requests(self):
@@ -20,10 +20,11 @@ class ZxcsSpider(scrapy.Spider):
         item['title'] = response.xpath('//div[@id="content"]/h1/text()').re('《(.*)》')
         item['author'] = response.xpath('//div[@id="content"]/h1/text()').re('：(.*)')
         item['page_url'] = response.xpath('//div[@id="ptop"]/a[4]/@href').extract()
-        item['image_urls'] = response.xpath('//img[@title="点击查看原图"]/@src').extract()
+        item['image_urls'] = response.xpath('//div[@id="content"]//img/@src').extract()
         item['tag'] = response.xpath('//p[@class="date"]//a//text()').extract()
         item['rating'] = response.xpath('//span[@id="moodinfo0"]').extract()
-        item['desc'] = response.xpath('//div[@id="content"]//p[3]').extract()
+        item['desc'] = response.xpath(
+            '//div[@id="content"]//p[3]').xpath('normalize-space(string(.))').extract()
         item['downloadpage_url'] = response.xpath(
             '//div[@class="down_2"]/a/@href').extract()[0]
 

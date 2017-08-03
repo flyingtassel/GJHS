@@ -14,9 +14,9 @@ BOT_NAME = 'zxcs8'
 SPIDER_MODULES = ['zxcs8.spiders']
 NEWSPIDER_MODULE = 'zxcs8.spiders'
 FEED_EXPORT_ENCODING = 'utf-8'
-FEED_URI = 'file:///d://GIT//zxcs8//%(time)s.csv'
+FEED_URI = 'file:///d://GIT//zxcs8//FEED-%(time)s.csv'
 FEED_FORMAT = 'CSV'
-
+LOG_FILE = 'LOG.txt'
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'zxcs8 (+http://www.yourdomain.com)'
@@ -30,10 +30,10 @@ ROBOTSTXT_OBEY = False
 # Configure a delay for requests for the same website (default: 0)
 # See http://scrapy.readthedocs.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
-DOWNLOAD_DELAY = 2
+DOWNLOAD_DELAY = 1
 # The download delay setting will honor only one of:
-CONCURRENT_REQUESTS_PER_DOMAIN = 5
-CONCURRENT_REQUESTS_PER_IP = 5
+# CONCURRENT_REQUESTS_PER_DOMAIN = 5
+# CONCURRENT_REQUESTS_PER_IP = 5
 
 # Disable cookies (enabled by default)
 #COOKIES_ENABLED = False
@@ -55,9 +55,10 @@ CONCURRENT_REQUESTS_PER_IP = 5
 
 # Enable or disable downloader middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
-#DOWNLOADER_MIDDLEWARES = {
-#    'zxcs8.middlewares.MyCustomDownloaderMiddleware': 543,
-#}
+DOWNLOADER_MIDDLEWARES = {
+    'scrapy.contrib.downloadermiddleware.useragent.UserAgentMiddleware': None,
+    'zxcs8.middlewares.RotateUserAgentMiddleware': 10}
+
 
 # Enable or disable extensions
 # See http://scrapy.readthedocs.org/en/latest/topics/extensions.html
@@ -67,8 +68,9 @@ CONCURRENT_REQUESTS_PER_IP = 5
 
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
-ITEM_PIPELINES = {'zxcs8.pipelines.Zxcs8filesPipeline': 100,
-                  'zxcs8.pipelines.Zxcs8imagesPipeline': 200}
+ITEM_PIPELINES = {'zxcs8.pipelines.Zxcs8filesPipeline': 300,
+                  'zxcs8.pipelines.Zxcs8imagesPipeline': 200,
+                  'zxcs8.pipelines.MyPipeline': 100, }
 FILES_STORE = '/git/zxcs8/downloads'
 FILES_EXPIRES = 360
 IMAGES_STORE = '/git/zxcs8/downloads'
