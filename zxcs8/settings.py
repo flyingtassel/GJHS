@@ -56,9 +56,9 @@ DOWNLOAD_DELAY = 1
 # Enable or disable downloader middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
 DOWNLOADER_MIDDLEWARES = {
-    'scrapy.contrib.downloadermiddleware.useragent.UserAgentMiddleware': None,
+    'scrapy.downloadermiddleware.useragent.UserAgentMiddleware': None,
     'zxcs8.middlewares.RotateUserAgentMiddleware': 10}
-
+DOWNLOAD_TIMEOUT = 60
 
 # Enable or disable extensions
 # See http://scrapy.readthedocs.org/en/latest/topics/extensions.html
