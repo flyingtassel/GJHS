@@ -1,13 +1,15 @@
 # -*- coding: utf-8 -*-
-import re
+import match
 import scrapy
-import codecs
+# from match import *
 from zxcs8.items import Zxcs8Item
 
 class ZxcsSpider(scrapy.Spider):
     name = "zxcs"
+    # m=match()
     allowed_domains = ["www.zxcs8.com"]
-    start_urls = ["http://www.zxcs8.com/post/" + str(x) for x in range(1090, 1093, 1)]
+    start_urls = ["http://www.zxcs8.com/post/" +
+                  str(x) for x in match.finddifs()[1]]
 
 
     # def start_requests(self):

@@ -14,7 +14,7 @@ BOT_NAME = 'zxcs8'
 SPIDER_MODULES = ['zxcs8.spiders']
 NEWSPIDER_MODULE = 'zxcs8.spiders'
 FEED_EXPORT_ENCODING = 'utf-8'
-FEED_URI = 'file:///d://GIT//zxcs8//FEED-%(time)s.csv'
+FEED_URI = 'file:///d://GIT//zxcs8//FEED.csv'
 FEED_FORMAT = 'CSV'
 LOG_FILE = 'LOG.txt'
 
@@ -58,7 +58,7 @@ DOWNLOAD_DELAY = 1
 DOWNLOADER_MIDDLEWARES = {
     'scrapy.downloadermiddleware.useragent.UserAgentMiddleware': None,
     'zxcs8.middlewares.RotateUserAgentMiddleware': 10}
-DOWNLOAD_TIMEOUT = 60
+DOWNLOAD_TIMEOUT = 600
 
 # Enable or disable extensions
 # See http://scrapy.readthedocs.org/en/latest/topics/extensions.html
@@ -71,9 +71,9 @@ DOWNLOAD_TIMEOUT = 60
 ITEM_PIPELINES = {'zxcs8.pipelines.Zxcs8filesPipeline': 300,
                   'zxcs8.pipelines.Zxcs8imagesPipeline': 200,
                   'zxcs8.pipelines.MyPipeline': 100, }
-FILES_STORE = '/git/zxcs8/downloads'
+FILES_STORE = 'E:\zxcsdownloads'
 FILES_EXPIRES = 360
-IMAGES_STORE = '/git/zxcs8/downloads'
+IMAGES_STORE = 'E:\zxcsdownloads'
 IMAGES_EXPIRES = 360
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See http://doc.scrapy.org/en/latest/topics/autothrottle.html
