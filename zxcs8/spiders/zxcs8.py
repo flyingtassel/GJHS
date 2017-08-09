@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import match
+# import match
 import scrapy
 # from match import *
 from zxcs8.items import Zxcs8Item
@@ -9,7 +9,7 @@ class ZxcsSpider(scrapy.Spider):
     # m=match()
     allowed_domains = ["www.zxcs8.com"]
     start_urls = ["http://www.zxcs8.com/post/" +
-                  str(x) for x in match.finddifs()[1]]
+                  str(x) for x in range(9000,9010,1)]
 
 
     # def start_requests(self):
@@ -25,7 +25,7 @@ class ZxcsSpider(scrapy.Spider):
         item['image_urls'] = response.xpath('//div[@id="content"]//img/@src').extract()
         item['tag'] = response.xpath('//p[@class="date"]//a//text()').extract()
         item['rating'] = response.xpath('//span[@id="moodinfo0"]').extract()
-        item['desc'] = response.xpath(
+        item['descr'] = response.xpath(
             '//div[@id="content"]//p[3]').xpath('normalize-space(string(.))').extract()
         item['downloadpage_url'] = response.xpath(
             '//div[@class="down_2"]/a/@href').extract()[0]

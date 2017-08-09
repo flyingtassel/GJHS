@@ -18,7 +18,7 @@ class Zxcs8Item(scrapy.Item):
     cover = scrapy.Field()
     tag = scrapy.Field()
     rating = scrapy.Field()
-    desc = scrapy.Field()
+    descr = scrapy.Field()
     downloadpage_url = scrapy.Field()
     download_node = scrapy.Field()
     download_url = scrapy.Field()

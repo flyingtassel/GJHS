@@ -13,10 +13,10 @@ BOT_NAME = 'zxcs8'
 
 SPIDER_MODULES = ['zxcs8.spiders']
 NEWSPIDER_MODULE = 'zxcs8.spiders'
-FEED_EXPORT_ENCODING = 'utf-8'
-FEED_URI = 'file:///d://GIT//zxcs8//FEED.csv'
-FEED_FORMAT = 'CSV'
-LOG_FILE = 'LOG.txt'
+# FEED_EXPORT_ENCODING = 'utf-8'
+# FEED_URI = 'file:///d://GIT//zxcs8//FEED.csv'
+# FEED_FORMAT = 'CSV'
+# LOG_FILE = 'LOG.txt'
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'zxcs8 (+http://www.yourdomain.com)'
@@ -68,13 +68,14 @@ DOWNLOAD_TIMEOUT = 600
 
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
-ITEM_PIPELINES = {'zxcs8.pipelines.Zxcs8filesPipeline': 300,
-                  'zxcs8.pipelines.Zxcs8imagesPipeline': 200,
-                  'zxcs8.pipelines.MyPipeline': 100, }
-FILES_STORE = 'E:\zxcsdownloads'
-FILES_EXPIRES = 360
-IMAGES_STORE = 'E:\zxcsdownloads'
-IMAGES_EXPIRES = 360
+ITEM_PIPELINES = {'zxcs8.pipelines.MySQLPipeline': 100
+                #   'zxcs8.pipelines.Zxcs8filesPipeline': 300,
+                #   'zxcs8.pipelines.Zxcs8imagesPipeline': 200,
+                }
+# FILES_STORE = 'E:\zxcsdownloads'
+# FILES_EXPIRES = 360
+# IMAGES_STORE = 'E:\zxcsdownloads'
+# IMAGES_EXPIRES = 360
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See http://doc.scrapy.org/en/latest/topics/autothrottle.html
 #AUTOTHROTTLE_ENABLED = True
@@ -95,3 +96,10 @@ IMAGES_EXPIRES = 360
 #HTTPCACHE_DIR = 'httpcache'
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
+# start MySQL database configure setting
+MYSQL_HOST = '47.93.198.222'
+MYSQL_DBNAME = 'scrapy'
+MYSQL_USER = 'scrapy'
+MYSQL_PASSWD = 'smoke123'
+MYSQL_PORT = '3306'
+# end of MySQL database configure setting
